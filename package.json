@@ -1,0 +1,20 @@
+{
+  "name": "re-shutdown",
+  "version": "1.0.0",
+  "description": "自动关机脚本",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "regaliastar",
+  "license": "MIT",
+   "bugs": {
+    "url": "https://github.com/regaliastar/re-shutdown/issues",
+    "email" :"1183080130@qq.com"
+  },
+  "homepage": "https://github.com/regaliastar/re-shutdown#readme",
+  "dependencies": {
+    "commander": "^2.11.0",
+    "node-cmd": "^3.10.9"
+  }
+}
