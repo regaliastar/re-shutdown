@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World!</title>
+    <meta charset="utf-8">
+  </head>
+  <script type="text/javascript">
+  	window.nodeRequire = require;
+	delete window.require;
+	delete window.exports;
+	delete window.module;
+  </script>
+  <script type="text/javascript" src="assets/jquery-3.1.1.js"></script>
+  <script type="text/javascript" src="assets/bootstrap-datetimepicker.min.js"></script>
+  <script type="text/javascript" src="js/ipc.js"></script>
+  <script type="text/javascript" src="js/menu.js"></script>
+  <body>
+    <h1>选择时间</h1>
+    We are using io.js <script>document.write(process.version)</script>
+    and Electron <script>document.write(process.versions['electron'])</script>.
+    <p></p>
+
+    <div class="input-append date form_datetime" data-date="2013-02-21T15:25:00Z">
+        <input size="16" type="text" value="" readonly>
+        <span class="add-on"><i class="icon-remove"></i></span>
+        <span class="add-on"><i class="icon-calendar"></i></span>
+    </div>
+     
+    <script type="text/javascript">
+        $('.form_datetime').datetimepicker({
+        	language:  'en',
+        	format: 'hh:ii',
+        	startView:1,
+        	autoclose: true,
+    	});
+    </script>
+
+  </body>
+</html>

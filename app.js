@@ -14,12 +14,12 @@ program
 var shutdownCommand = {
 
 	exec : function(){
-		var ms = program.args[0] * 1000;
+		var minutes = program.args[0] * 60;
 
 		cmd.get(
-        	'shutdown -s -t '+ms,
+        	'shutdown -s -t '+minutes,
         	function(err, data, stderr){
-            	console.log(data+'命令成功执行, 系统于 '+program.args[0]+' 秒后关机');
+            	console.log(data+'命令成功执行, 系统于 '+program.args[0]+' 分钟后关机');
         	}
     	);
 
