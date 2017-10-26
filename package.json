@@ -8,13 +8,13 @@
   },
   "author": "regaliastar",
   "license": "MIT",
-   "bugs": {
+  "bugs": {
     "url": "https://github.com/regaliastar/re-shutdown/issues",
-    "email" :"1183080130@qq.com"
+    "email": "1183080130@qq.com"
   },
   "homepage": "https://github.com/regaliastar/re-shutdown#readme",
   "dependencies": {
     "commander": "^2.11.0",
-    "node-cmd": "^3.10.9"
+    "node-cmd": "^3.0.0"
   }
 }

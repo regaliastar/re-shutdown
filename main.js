@@ -3,6 +3,32 @@ const { app } = electron;                      // 控制应用生命周期的模
 const { BrowserWindow } = electron;  // 创建原生浏览器窗口的模块
 const { ipcMain } = electron;
 
+var handle = function(taskTime){
+  var cmd = require('node-cmd');
+
+  cmd.get(
+          'shutdown -s -t '+taskTime,
+          function(err, data, stderr){
+              console.log(data+'命令成功执行, 系统于 '+Math.floor(taskTime/60)+' 分钟后关机');
+          }
+      );
+
+      cmd.run('touch example.created.file');
+}
+
+var quit = function(){
+  var cmd = require('node-cmd');
+
+  cmd.get(
+          'shutdown -a',
+          function(err, data, stderr){
+              console.log(data+'成功取消关机任务');
+          }
+      );
+
+      cmd.run('touch example.created.file');
+}
+
 // 保持一个对于 window 对象的全局引用，不然，当 JavaScript 被 GC，
 // window 会被自动地关闭
 var win = null;
@@ -22,7 +48,7 @@ var createWindow = function(){
   // 创建浏览器窗口。
   win = new BrowserWindow({
                       width: 800, 
-                      height: 600
+                      height: 400
                       //transparent: true,  //透明
                       //frame: false        //无边框
                     });
@@ -45,12 +71,19 @@ var createWindow = function(){
 
   // 监听同步消息
   ipcMain.on('synchronous-message', (event, arg) => {
-    event.returnValue = 'okkkkkkkkk';
+    if(!isNaN(arg) && arg !== 0){
+      handle(arg);
+    }
+    
+    event.returnValue = 'ok';
   });
 
 
   // 监听异步的消息。
   ipcMain.on('asynchronous-message', (event, arg) => {
+    if(arg == 'quit'){
+      quit();
+    }
     // 返回消息
     event.sender.send('asynchronous-reply', 'pong');
   });
@@ -81,3 +114,4 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
